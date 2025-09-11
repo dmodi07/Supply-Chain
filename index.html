@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Supply Chain Cost Calculator</h1>
+            <p>Calculate shipping costs, delivery times, and optimize routes</p>
+        </header>
+
+        <div class="calculator-grid">
+            <div class="card">
+                <h2>Shipping Calculator</h2>
+                <form id="shippingForm">
+                    <div class="form-group">
+                        <label for="origin">Origin (City or Postal Code):</label>
+                        <input type="text" id="origin" placeholder="Enter Canadian city or postal code (e.g., Toronto, ON or M5V 3A8)" required>
+                        <div id="originSuggestions" class="suggestions"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">Destination (City or Postal Code):</label>
+                        <input type="text" id="destination" placeholder="Enter Canadian city or postal code (e.g., Vancouver, BC or V6B 1A1)" required>
+                        <div id="destinationSuggestions" class="suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Weight (lbs):</label>
+                        <input type="number" id="weight" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shippingType">Shipping Type:</label>
+                        <select id="shippingType" required>
+                            <option value="standard">Standard (5-7 days)</option>
+                            <option value="express">Express (2-3 days)</option>
+                            <option value="overnight">Overnight (1 day)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Calculate Shipping</button>
+                </form>
+
+                <div id="shippingResults" class="results hidden">
+                    <h3>Shipping Results</h3>
+                    <div class="result-item">
+                        <span>Cost:</span>
+                        <span id="shippingCost">$0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Delivery Time:</span>
+                        <span id="deliveryTime">0 days</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Distance:</span>
+                        <span id="distance">0 km</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Route Optimizer</h2>
+                <form id="routeForm">
+                    <div class="form-group">
+                        <label for="startLocation">Start Location:</label>
+                        <input type="text" id="startLocation" placeholder="Enter Canadian city or postal code" required>
+                        <div id="startSuggestions" class="suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stopInput">Add Stops:</label>
+                        <input type="text" id="stopInput" placeholder="Enter Canadian city or postal code and press Enter">
+                        <div id="stopSuggestions" class="suggestions"></div>
+                        <div id="stopsList" class="stops-list"></div>
+                    </div>
+
+                    <button type="submit">Optimize Route</button>
+                </form>
+
+                <div id="routeResults" class="results hidden">
+                    <h3>Optimized Route</h3>
+                    <div id="routeOrder"></div>
+                    <div class="result-item">
+                        <span>Total Distance:</span>
+                        <span id="totalDistance">0 km</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Cost:</span>
+                        <span id="totalCost">$0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Estimated Time:</span>
+                        <span id="totalTime">0 days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
